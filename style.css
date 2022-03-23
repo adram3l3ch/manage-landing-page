@@ -378,6 +378,7 @@ body {
 		grid-template-columns: repeat(4, 100%);
 		scroll-snap-type: x mandatory;
 		scroll-padding-inline: var(--s2);
+		scroll-behavior: smooth;
 	}
 
 	.testimonial {
@@ -432,5 +433,22 @@ body {
 	.footer__content.six {
 		grid-column: span 2;
 		justify-self: center;
+	}
+
+	.slider-accessor {
+		display: flex;
+		gap: var(--s1);
+	}
+
+	.dot {
+		width: 10px;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		border: 1px solid var(--primary-400);
+		cursor: pointer;
+	}
+
+	.active.dot {
+		background-color: var(--primary-400);
 	}
 }
