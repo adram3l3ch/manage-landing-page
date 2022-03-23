@@ -31,11 +31,11 @@ h4 {
 }
 
 h1 {
-	font-size: 3.5rem;
+	font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
 h2 {
-	font-size: 2.5rem;
+	font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 p {
@@ -58,9 +58,12 @@ img {
 	display: block;
 }
 
+.hero__image > img {
+	width: 100%;
+}
+
 body {
 	font-family: 'Be Vietnam Pro', sans-serif;
-	/* background-color: var(--secondary-800); */
 }
 
 .manage {
@@ -116,13 +119,17 @@ body {
 .hero {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: calc(2 * var(--s6));
+	gap: var(--s6);
 	align-items: center;
 	margin-bottom: calc(var(--s4) + var(--s6));
 }
 
 .hero__content > * + * {
 	margin-top: var(--s3);
+}
+
+.hero__title {
+	max-width: 670px;
 }
 
 .hero__text {
@@ -137,7 +144,7 @@ body {
 .features > .container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: calc(2 * var(--s6));
+	gap: var(--s6);
 	margin-bottom: calc(5 * var(--s4));
 }
 
@@ -184,12 +191,14 @@ body {
 	align-items: center;
 	gap: var(--s6);
 	margin-bottom: calc(5 * var(--s4));
+	overflow: hidden;
 }
 .testimonials__title {
 	margin-bottom: var(--s4);
 }
 
 .testimonials__slider {
+	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(4, min(40%, 600px));
 	gap: var(--s4);
@@ -227,7 +236,16 @@ body {
 .outro {
 	background: url(./images/bg-simplify-section-desktop.svg) no-repeat left 15rem bottom;
 	background-color: var(--primary-400);
-	height: 14rem;
+	min-height: 14rem;
+	display: flex;
+	align-items: center;
+}
+
+.outro > .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
 }
 
 .outro__title {
@@ -247,13 +265,6 @@ body {
 	color: hsl(12, 80%, 70%);
 }
 
-.outro > .container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 100%;
-}
-
 .footer {
 	background-color: var(--secondary-200);
 	padding-bottom: var(--s2);
@@ -262,15 +273,8 @@ body {
 .footer > .container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	gap: var(--s4);
 	padding-block: var(--s6);
-}
-
-.footer__content:nth-child(1),
-.footer__content:nth-child(4) {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
 }
 
 .footer__social__links {
@@ -294,7 +298,6 @@ body {
 }
 
 .newsletter {
-	margin-left: auto;
 	display: flex;
 }
 
@@ -312,8 +315,122 @@ body {
 	font-size: 0.8rem;
 }
 
+.footer__content.two,
+.footer__content.three {
+	grid-row: span 2;
+}
+
+.footer__content.four,
+.footer__content.six {
+	justify-self: end;
+}
+
 @media (min-width: 2500px) {
 	.testimonials__slider {
 		justify-content: center;
+	}
+}
+
+@media (max-width: 1000px) {
+	.container {
+		width: 90%;
+	}
+}
+
+@media (max-width: 800px) {
+	h1 {
+		font-size: 3rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+	.header__nav__links,
+	.header__btn {
+		display: none;
+	}
+	.hero {
+		grid-template-columns: 1fr;
+		justify-content: center;
+	}
+	.hero__content {
+		text-align: center;
+		order: 2;
+	}
+	.hero__text,
+	.features__left__text {
+		width: 100%;
+	}
+
+	.features > .container {
+		grid-template-columns: 1fr;
+	}
+
+	.features__left {
+		text-align: center;
+	}
+
+	.feature__item__text {
+		grid-column: 1/3;
+	}
+
+	.testimonials__slider {
+		grid-template-columns: repeat(4, 100%);
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: var(--s2);
+	}
+
+	.testimonial {
+		scroll-snap-align: start;
+	}
+
+	.outro > .container {
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		gap: var(--s4);
+		padding: var(--s6);
+	}
+
+	.footer > .container {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.footer__content.four {
+		order: -1;
+		width: 100%;
+		grid-column: span 2;
+	}
+
+	.footer__content {
+		justify-self: center;
+	}
+
+	.footer__content.one {
+		grid-row: 5/6;
+		grid-column: span 2;
+	}
+
+	.footer__content.five {
+		grid-column: span 2;
+		width: 100%;
+	}
+
+	.footer__social__links {
+		justify-content: space-around;
+		margin-block: var(--s4);
+	}
+
+	.footer__social__links svg {
+		transform: scale(1.5);
+	}
+
+	.newsletter__input {
+		width: 100%;
+	}
+
+	.footer__content.six {
+		grid-column: span 2;
+		justify-self: center;
 	}
 }
