@@ -68,6 +68,7 @@ body {
 
 .manage {
 	background: url(./images/bg-tablet-pattern.svg) no-repeat right -12rem top -15rem;
+	overflow-x: hidden;
 }
 
 .container {
@@ -75,6 +76,8 @@ body {
 	width: 80%;
 	max-width: 1440px;
 }
+
+/* -------------------------------------------------------------- header ----------------------------------------------------------------------- */
 
 .header {
 	display: flex;
@@ -116,6 +119,59 @@ body {
 	background-color: hsl(12, 80%, 70%);
 }
 
+.hamburger {
+	z-index: 2;
+	cursor: pointer;
+	display: none;
+}
+
+.hamburger > *:not(.open) {
+	display: none;
+}
+
+.aside__nav {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.363);
+	display: flex;
+	justify-content: center;
+	padding-top: 8rem;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease-out;
+	z-index: 1;
+	display: none;
+}
+
+.aside__nav__links {
+	background-color: white;
+	width: 85vw;
+	border-radius: var(--s1);
+	padding: var(--s4);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: var(--s4);
+	transform: translateY(-2rem);
+	transition: transform 0.2s ease-out;
+}
+
+.aside__nav.active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.aside__nav.active .aside__nav__links {
+	transform: translateY(0);
+}
+
+.aside__nav__links a {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+/* ------------------------------------------------------------------------- hero ------------------------------------------------------------- */
+
 .hero {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -136,6 +192,8 @@ body {
 	width: 80%;
 	margin-bottom: var(--s2);
 }
+
+/* ------------------------------------------------------------------------- features ------------------------------------------------------------- */
 
 .features {
 	position: relative;
@@ -183,14 +241,18 @@ body {
 	color: var(--primary-800);
 	font-weight: 700;
 	margin-right: var(--s2);
+	position: relative;
 }
+
+/* ------------------------------------------------------------------------- testimonials ------------------------------------------------------------- */
 
 .testimonials {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: var(--s6);
-	margin-bottom: calc(5 * var(--s4));
+	padding-bottom: var(--s6);
+	margin-bottom: calc(5 * var(--s3));
 	overflow: hidden;
 }
 .testimonials__title {
@@ -204,6 +266,10 @@ body {
 	gap: var(--s4);
 	padding: var(--s6) var(--s2) 0;
 	overflow: scroll;
+}
+
+.slider-accessor {
+	display: none;
 }
 
 .testimonials__slider::-webkit-scrollbar {
@@ -232,6 +298,8 @@ body {
 .testimonial__title {
 	margin-top: var(--s3);
 }
+
+/* ------------------------------------------------------------------------- outro ------------------------------------------------------------- */
 
 .outro {
 	background: url(./images/bg-simplify-section-desktop.svg) no-repeat left 15rem bottom;
@@ -264,6 +332,8 @@ body {
 .outro__btn:hover {
 	color: hsl(12, 80%, 70%);
 }
+
+/* ------------------------------------------------------------------------- footer ------------------------------------------------------------- */
 
 .footer {
 	background-color: var(--secondary-200);
@@ -325,11 +395,15 @@ body {
 	justify-self: end;
 }
 
+/* ------------------------------------------------------------------------- wide screen ------------------------------------------------------------- */
+
 @media (min-width: 2500px) {
 	.testimonials__slider {
 		justify-content: center;
 	}
 }
+
+/* ------------------------------------------------------------------------- medium screen ------------------------------------------------------------- */
 
 @media (max-width: 1000px) {
 	.container {
@@ -337,14 +411,28 @@ body {
 	}
 }
 
+/* ------------------------------------------------------------------------- small screen ------------------------------------------------------------- */
+
 @media (max-width: 800px) {
 	h1 {
-		font-size: 3rem;
+		font-size: 2.5rem;
 	}
 
 	h2 {
 		font-size: 2rem;
 	}
+	.hamburger {
+		display: initial;
+	}
+
+	.manage {
+		background-size: max(110%, 40rem);
+	}
+
+	.aside__nav {
+		display: flex;
+	}
+
 	.header__nav__links,
 	.header__btn {
 		display: none;
@@ -374,6 +462,16 @@ body {
 		grid-column: 1/3;
 	}
 
+	.sl-no::before {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 600px;
+		background-color: var(--primary-800);
+		top: 0;
+		z-index: -1;
+	}
+
 	.testimonials__slider {
 		grid-template-columns: repeat(4, 100%);
 		scroll-snap-type: x mandatory;
@@ -383,6 +481,11 @@ body {
 
 	.testimonial {
 		scroll-snap-align: start;
+	}
+
+	.outro {
+		background: url(./images/bg-simplify-section-mobile.svg) no-repeat;
+		background-color: var(--primary-400);
 	}
 
 	.outro > .container {

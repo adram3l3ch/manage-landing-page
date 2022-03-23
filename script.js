@@ -1,8 +1,12 @@
 const dots = document.querySelectorAll('.dot');
 const testimonial = document.querySelector('.testimonials__slider');
+const hamburger = document.querySelector('.hamburger');
+const openbtn = document.querySelector('#open');
+const closebtn = document.querySelector('#close');
 
 let index = 0;
 let time;
+let opened = false;
 
 const highlightDot = i => {
 	document.querySelector('.dot.active')?.classList.remove('active');
@@ -28,3 +32,10 @@ dots.forEach((dot, i) => {
 });
 
 testimonial.addEventListener('scroll', handleScroll);
+
+hamburger.addEventListener('click', () => {
+	document.querySelector('.aside__nav').classList.toggle('active');
+	opened = !opened;
+	openbtn.classList.toggle('open', !opened);
+	closebtn.classList.toggle('open', opened);
+});
