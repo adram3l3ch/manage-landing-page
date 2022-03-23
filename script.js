@@ -36,6 +36,8 @@ testimonial.addEventListener('scroll', handleScroll);
 hamburger.addEventListener('click', () => {
 	document.querySelector('.aside__nav').classList.toggle('active');
 	opened = !opened;
+	if (opened) document.body.style.overflowY = 'hidden';
+	else document.body.style.overflowY = 'initial';
 	openbtn.classList.toggle('open', !opened);
 	closebtn.classList.toggle('open', opened);
 });
