@@ -83,8 +83,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-block: var(--s6);
-	margin-bottom: var(--s6);
+	padding-block: calc(2 * var(--s4));
+	margin-bottom: calc(var(--s6) + var(--s4));
 }
 
 .header__nav__links {
@@ -177,7 +177,7 @@ body {
 	grid-template-columns: 1fr 1fr;
 	gap: var(--s6);
 	align-items: center;
-	margin-bottom: calc(var(--s4) + var(--s6));
+	margin-bottom: calc(2 * var(--s6));
 }
 
 .hero__content > * + * {
