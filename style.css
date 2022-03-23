@@ -84,7 +84,7 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	padding-block: calc(2 * var(--s4));
-	margin-bottom: calc(var(--s6) + var(--s4));
+	margin-bottom: calc(var(--s6) + var(--s2));
 }
 
 .header__nav__links {
