@@ -23,14 +23,19 @@
 	--s6: 3rem;
 }
 
+h1,
+h2,
+h3,
+h4 {
+	color: var(--secondary-400);
+}
+
 h1 {
 	font-size: 3.5rem;
-	color: var(--secondary-400);
 }
 
 h2 {
 	font-size: 2.5rem;
-	color: var(--secondary-400);
 }
 
 p {
@@ -66,7 +71,6 @@ body {
 	margin-inline: auto;
 	width: 80%;
 	max-width: 1440px;
-	position: relative;
 }
 
 .header {
@@ -88,6 +92,10 @@ body {
 	font-size: 0.8rem;
 }
 
+.nav__link:hover {
+	color: var(--secondary-600);
+}
+
 .cta {
 	background-color: var(--primary-400);
 	border: none;
@@ -98,6 +106,11 @@ body {
 	font-family: inherit;
 	cursor: pointer;
 	box-shadow: 0 1rem 1rem -0.5rem hsla(12, 88%, 59%, 0.321);
+	transition: background-color 0.2s ease-out;
+}
+
+.cta:not(.outro__btn):hover {
+	background-color: hsl(12, 80%, 70%);
 }
 
 .hero {
@@ -118,6 +131,10 @@ body {
 }
 
 .features {
+	position: relative;
+}
+
+.features > .container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: calc(2 * var(--s6));
@@ -129,7 +146,7 @@ body {
 	z-index: -1;
 	left: 0;
 	bottom: 0;
-	transform: translate(-80%, 70%);
+	transform: translate(-65%, 75%);
 }
 
 .features__left > * + *,
@@ -168,14 +185,16 @@ body {
 	gap: var(--s6);
 	margin-bottom: calc(5 * var(--s4));
 }
+.testimonials__title {
+	margin-bottom: var(--s4);
+}
 
 .testimonials__slider {
 	display: grid;
-	width: 100%;
 	grid-template-columns: repeat(4, min(40%, 600px));
 	gap: var(--s4);
 	padding: var(--s6) var(--s2) 0;
-	overflow-x: auto;
+	overflow: scroll;
 }
 
 .testimonials__slider::-webkit-scrollbar {
@@ -190,7 +209,7 @@ body {
 	align-items: center;
 	gap: var(--s2);
 	text-align: center;
-	padding: var(--s5);
+	padding: var(--s4);
 	position: relative;
 }
 
@@ -221,6 +240,11 @@ body {
 	color: var(--primary-400);
 	font-weight: 700;
 	box-shadow: 0 1rem 1rem -0.5rem hsla(11, 57%, 5%, 0.221);
+	transition: color 0.2s ease-out;
+}
+
+.outro__btn:hover {
+	color: hsl(12, 80%, 70%);
 }
 
 .outro > .container {
@@ -254,11 +278,19 @@ body {
 	gap: var(--s2);
 }
 
+.footer__social__links > li:hover svg path {
+	fill: var(--primary-400);
+}
+
 .footer__nav__links {
 	color: var(--secondary-800);
 	display: flex;
 	flex-direction: column;
 	gap: var(--s2);
+}
+
+.footer__nav__links > li:hover {
+	color: var(--primary-400);
 }
 
 .newsletter {
@@ -278,4 +310,10 @@ body {
 	color: var(--secondary-600);
 	margin-left: auto;
 	font-size: 0.8rem;
+}
+
+@media (min-width: 2500px) {
+	.testimonials__slider {
+		justify-content: center;
+	}
 }
